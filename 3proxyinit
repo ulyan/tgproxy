@@ -16,7 +16,7 @@ case "$1" in
 
 	/usr/bin/3proxy /etc/3proxy/3proxy.cfg
 	;;
-	
+
 	stop)
 	echo Stopping 3Proxy
 	/usr/bin/killall 3proxy
