@@ -1,32 +1,32 @@
-sudo apt-get install -y build-essential nano wget tar gzip ufw
+`sudo apt-get install -y build-essential nano wget tar gzip ufw`
 
-cd ~
+`cd ~`
 
-wget --no-check-certificate https://github.com/z3APA3A/3proxy/archive/0.8.10.tar.gz
+`wget --no-check-certificate https://github.com/z3APA3A/3proxy/archive/0.8.10.tar.gz`
 
-tar xzf 0.8.10.tar.gz
+`tar xzf 0.8.10.tar.gz`
 
-cd ~/3proxy-0.8.10
+`cd ~/3proxy-0.8.10`
 
-sudo make -f Makefile.Linux
+`sudo make -f Makefile.Linux`
 
-sudo mkdir /etc/3proxy
+`sudo mkdir /etc/3proxy`
 
-cd ~/3proxy-0.8.10/src
+`cd ~/3proxy-0.8.10/src`
 
-sudo cp 3proxy /usr/bin/
+`sudo cp 3proxy /usr/bin/`
 
-sudo adduser --system --no-create-home --disabled-login --group proxy3
+`sudo adduser --system --no-create-home --disabled-login --group proxy3`
 
-id proxy3
+`id proxy3
 
-sudo nano /etc/3proxy/3proxy.cfg
+`sudo nano /etc/3proxy/3proxy.cfg`
 
-sudo chown proxy3:proxy3 -R /etc/3proxy
+`sudo chown proxy3:proxy3 -R /etc/3proxy`
 
-sudo chown proxy3:proxy3 /usr/bin/3proxy
+`sudo chown proxy3:proxy3 /usr/bin/3proxy`
 
-sudo chmod 444 /etc/3proxy/3proxy.cfg
+`sudo chmod 444 /etc/3proxy/3proxy.cfg`
 
     daemon
     setgid XXX
@@ -43,7 +43,7 @@ sudo chmod 444 /etc/3proxy/3proxy.cfg
     allow * * 91.108.8.0/22 443 CONNECT * *
     socks -p1080
 
-sudo nano /etc/init.d/3proxyinit
+`sudo nano /etc/init.d/3proxyinit`
 
     #!/bin/sh
     #
@@ -79,16 +79,16 @@ sudo nano /etc/init.d/3proxyinit
     esac
     exit 0
     
-sudo chmod +x /etc/init.d/3proxyinit
+`sudo chmod +x /etc/init.d/3proxyinit`
 
-sudo update-rc.d 3proxyinit defaults
+`sudo update-rc.d 3proxyinit defaults`
 
-sudo /etc/init.d/3proxyinit start
+`sudo /etc/init.d/3proxyinit start`
 
-sudo ufw allow 1080/tcp
+`sudo ufw allow 1080/tcp`
 
-sudo ufw enable
+`sudo ufw enable`
 
-rm ~/0.8.10.tar.gz
+`rm ~/0.8.10.tar.gz`
 
-sudo rm -r ~/3proxy-0.8.10
+`sudo rm -r ~/3proxy-0.8.10`
