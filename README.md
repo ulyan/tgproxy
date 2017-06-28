@@ -1,3 +1,6 @@
+3proxy installation and configuration for Telegram Proxy
+===
+
 `sudo apt-get install -y build-essential nano wget tar gzip ufw`
 
 `cd ~`
