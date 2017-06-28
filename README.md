@@ -13,8 +13,8 @@
 	sudo adduser --system --no-create-home --disabled-login --group proxy3
 	cd /etc/3proxy/
 	sudo wget https://tvoridob.ro/tgproxy/3proxy.cfg
-	id proxy3 //смотрим setgid и setuid и вписываем их в конфиг
-	cat /etc/resolv.conf //смотрим неймсервера и вписываем их в конфиг
+	id proxy3	//смотрим setgid и setuid и вписываем их в конфиг
+	cat /etc/resolv.conf	//смотрим неймсервера и вписываем их в конфиг
 	sudo nano /etc/3proxy/3proxy.cfg
 	sudo chown proxy3:proxy3 -R /etc/3proxy
 	sudo chown proxy3:proxy3 /usr/bin/3proxy
