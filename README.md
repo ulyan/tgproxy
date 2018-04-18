@@ -1,4 +1,4 @@
-# Dante Proxy installation and configuration for Telegram Messenger
+# Dante Proxy installation for Telegram Messenger
 
 ## Ubuntu 16.04
 
