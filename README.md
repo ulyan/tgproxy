@@ -15,7 +15,7 @@
 	wget -c http://tvoridob.ro/tgproxy/sockd.conf -O /etc/sockd.conf
 	ifconfig //запомните адрес сетевого интерфейса
 	nano /etc/sockd.conf //вместо eth0 впишите сетевой интерфейс, возможно в external придется вписать внешний IP сервера
-	/opt/dante/sbin/sockd -D -f /etc/sockd.conf -D //запуск Dante, выключается командой /usr/bin/pkill sockd
+	/opt/dante/sbin/sockd -D -f /etc/sockd.conf //запуск Dante, выключается командой /usr/bin/pkill sockd
 	sudo ufw allow 1080/tcp
 	sudo ufw allow 22/tcp
 	sudo ufw enable
