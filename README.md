@@ -14,7 +14,7 @@
 	/opt/dante/sbin/sockd -v //проверка установки и версии
 	wget -c http://tvoridob.ro/tgproxy/sockd.conf -O /etc/sockd.conf
 	ifconfig //запомните адрес сетевого интерфейса
-	nano /etc/sockd.conf //вместо eth0 впишите сетевой интерфейс, возможно придется в external вписать внешний IP сервера
+	nano /etc/sockd.conf //вместо eth0 впишите сетевой интерфейс, возможно в external придется вписать внешний IP сервера
 	/opt/dante/sbin/sockd -D //запуск Dante как сервиса
 	/opt/dante/sbin/sockd -f /etc/sockd.conf -D //запуск Dante, выключается командой /usr/bin/pkill sockd
 	sudo ufw allow 1080/tcp
