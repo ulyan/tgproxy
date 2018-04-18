@@ -1,32 +1,28 @@
-# 3proxy installation and configuration for Telegram Proxy
+# Dante Proxy installation and configuration for Telegram Messenger
 
-	sudo apt-get install -y build-essential nano wget tar gzip ufw
-	cd ~
-	wget --no-check-certificate https://github.com/z3APA3A/3proxy/archive/0.8.11.tar.gz
-	tar xzf 0.8.11.tar.gz
-	cd ~/3proxy-0.8.11
-	sudo make -f Makefile.Linux
-	sudo mkdir /etc/3proxy
-	cd ~/3proxy-0.8.11/src
-	sudo cp 3proxy /usr/bin/
-	sudo adduser --system --no-create-home --disabled-login --group proxy3
-	cd /etc/3proxy/
-	sudo wget https://tvoridob.ro/tgproxy/3proxy.cfg
-	id proxy3	//запоминаем setgid и setuid
-	cat /etc/resolv.conf	//запоминаем неймсервера
-	sudo nano /etc/3proxy/3proxy.cfg	//вписываем в конфиг setgid, setuid и неймсервера
-	sudo chown proxy3:proxy3 -R /etc/3proxy
-	sudo chown proxy3:proxy3 /usr/bin/3proxy
-	sudo chmod 444 /etc/3proxy/3proxy.cfg
-	cd /etc/init.d/ 
-	sudo wget https://tvoridob.ro/tgproxy/3proxyinit
-	sudo chmod +x /etc/init.d/3proxyinit
-	sudo update-rc.d 3proxyinit defaults
-	sudo /etc/init.d/3proxyinit start
+## Ubuntu 16.04
+
+	sudo apt-get update && apt-get upgrade
+	sudo apt-get install -y gcc build-essential libwrap0 libwrap0-dev libpam0g-dev make nano wget tar gzip ufw
+	cd /opt
+	wget http://www.inet.no/dante/files/dante-1.4.2.tar.gz
+	tar -xvf dante-1.4.2.tar.gz
+	cd dante-1.4.2/
+	mkdir /opt/dante
+	./configure --prefix=/opt/dante
+	make && make install
+	/opt/dante/sbin/sockd -v //проверка установки и версии
+	wget -c http://tvoridob.ro/tgproxy/sockd.conf -O /etc/sockd.conf
+	ifconfig //запомните адрес сетевого интерфейса
+	nano /etc/sockd.conf //вместо eth0 впишите сетевой интерфейс, возможно придется в external вписать внешний IP сервера
+	/opt/dante/sbin/sockd -D //запуск Dante как сервиса
+	/opt/dante/sbin/sockd -f /etc/sockd.conf -D //запуск Dante, выключается командой /usr/bin/pkill sockd
 	sudo ufw allow 1080/tcp
 	sudo ufw allow 22/tcp
 	sudo ufw enable
-	rm ~/0.8.11.tar.gz
-	sudo rm -r ~/3proxy-0.8.11
-	
+	rm /opt/dante-1.4.2.tar.gz
+	sudo rm -r /opt/dante-1.4.2/
+
+Dante enabled and working at YOUR.SERVER.IP:1080
+
 ![Fuck RKN!](https://img.shields.io/badge/Fuck-RKN-brightgreen.svg)
