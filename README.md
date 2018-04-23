@@ -20,7 +20,7 @@
 	sudo ufw allow 22/tcp
 	sudo ufw enable
 	rm /opt/dante-1.4.2.tar.gz
-	sudo rm -r /opt/dante-1.4.2/
+	rm -r /opt/dante-1.4.2/
 
 Dante enabled and working at YOUR.SERVER.IP:1080
 
