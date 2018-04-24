@@ -17,7 +17,7 @@
 	./configure --prefix=/opt/dante
 	make && make install
 	
-**Загружаем конфига для Telegram:**
+**Загружаем конфиг для Telegram:**
 
 	wget -c http://tvoridob.ro/tgproxy/sockd.conf -O /etc/sockd.conf
 
