@@ -30,7 +30,7 @@
 
 	/opt/dante/sbin/sockd -D -f /etc/sockd.conf
 
-**Останавливается он этой командой:**
+**Останавливаем прокси-сервер:**
 
 	/usr/bin/pkill sockd
 	
