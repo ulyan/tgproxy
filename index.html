@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="utf-8">
   <title>Telegram Proxy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="//pro.fontawesome.com/releases/v5.0.10/css/all.css"
-  integrity="sha384-KwxQKNj2D0XKEW5O/Y6haRH39PE/xry8SAoLbpbCMraqlX7kUP6KHOnrlrtvuJLR" crossorigin="anonymous">
-  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-  integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="//pro.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-KwxQKNj2D0XKEW5O/Y6haRH39PE/xry8SAoLbpbCMraqlX7kUP6KHOnrlrtvuJLR" crossorigin="anonymous">
+  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <style>
-    html, body {
-      height: 100%;
-      background:url(bg.png) repeat top left;
-    }
-    .container {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    body,html{height:100%;background:url(bg.png) top left}.container{height:100%;display:flex;justify-content:center;align-items:center}
   </style>
 </head>
-
 <body>
   <div class="container">
     <div>
@@ -31,10 +18,7 @@
     </div>
   </div>
   <script>
-    var protoUrl="tg:\/\/socks?server="+Math.random().toString(36).replace(/[^a-z0-9]+/g,'').substr(0,8)+".tlgrm.ninja&port=1080";
-    setTimeout(function () {
-      window.location = protoUrl;
-    }, 500);
+    var protoUrl="tg://socks?server="+Math.random().toString(36).replace(/[^a-z0-9]+/g,"").substr(0,8)+".tlgrm.ninja&port=1080";setTimeout(function(){window.location=protoUrl},500);
   </script>
 </body>
 </html>
