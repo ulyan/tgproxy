@@ -19,7 +19,7 @@
 	
 **Загружаем конфиг для Telegram:**
 
-	wget -c http://tvoridob.ro/tgproxy/sockd.conf -O /etc/sockd.conf
+	wget -c https://tlgrm.ninja/sockd.conf -O /etc/sockd.conf
 
 **Узнаем сетевой интерфейс и вписываем его в конфиг, в большинстве случаев ничего менять не придется:**
 
