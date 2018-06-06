@@ -1,4 +1,4 @@
-# Настройка прокси-сервера (SOCKS, MtProto) под Telegram ![Fuck RKN!](https://img.shields.io/badge/Fuck-RKN-brightgreen.svg)
+# Настройка прокси-сервера для Telegram ![Fuck RKN!](https://img.shields.io/badge/Fuck-RKN-brightgreen.svg)
 
 ## Ubuntu 16.04
 
