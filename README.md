@@ -20,7 +20,7 @@
 	rm -r /opt/dante-1.4.2/
 	wget -c https://tlgrm.ninja/sockd.conf -O /etc/sockd.conf
 
-**Узнаем сетевой интерфейс и вписываем его в конфиг, в большинстве случаев ничего менять не придется:**
+**Узнаем сетевой интерфейс и вписываем его в конфиг (в большинстве случаев ничего менять не придется):**
 
 	ifconfig
 	nano /etc/sockd.conf
@@ -45,7 +45,7 @@
 
 	docker stop mtproto-proxy
 	
-**Закрываем на сервере все порты, кроме 22 (ssh), 1080 (SOCKS) и 443 (MTProto):**
+**Закрываем на сервере все порты, кроме 22 (SSH), 1080 (SOCKS) и 443 (MTProto):**
 
 	sudo ufw allow 1080/tcp
 	sudo ufw allow 22/tcp
