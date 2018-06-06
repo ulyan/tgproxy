@@ -1,11 +1,11 @@
-# Настройка прокси-сервера Dante под Telegram ![Fuck RKN!](https://img.shields.io/badge/Fuck-RKN-brightgreen.svg)
+# Настройка прокси-сервера (SOCKS, MtProto) под Telegram ![Fuck RKN!](https://img.shields.io/badge/Fuck-RKN-brightgreen.svg)
 
 ## Ubuntu 16.04
 
 **Обновляем систему и устанавливаем необходимые пакеты:**
 
 	sudo apt-get -y update && apt-get -y upgrade
-	sudo apt-get install -y gcc build-essential libwrap0 libwrap0-dev libpam0g-dev make nano wget tar gzip ufw
+	sudo apt-get install -y gcc build-essential libwrap0 libwrap0-dev libpam0g-dev make nano wget tar gzip ufw docker.io
 
 **Загружаем и компилируем Dante:**
 
@@ -16,9 +16,8 @@
 	mkdir /opt/dante
 	./configure --prefix=/opt/dante
 	make && make install
-	
-**Загружаем конфиг для Telegram:**
-
+	rm /opt/dante-1.4.2.tar.gz
+	rm -r /opt/dante-1.4.2/
 	wget -c https://tlgrm.ninja/sockd.conf -O /etc/sockd.conf
 
 **Узнаем сетевой интерфейс и вписываем его в конфиг, в большинстве случаев ничего менять не придется:**
@@ -26,18 +25,31 @@
 	ifconfig
 	nano /etc/sockd.conf
 
-**Запускаем прокси-сервер:**
+**Запускаем SOCKS-прокси:**
 
 	/opt/dante/sbin/sockd -D -f /etc/sockd.conf
 
-**Останавливаем прокси-сервер:**
+**Останавливаем SOCKS-прокси:**
 
 	/usr/bin/pkill sockd
 	
-**Закрываем на сервере все порты кроме 22 (ssh) и 1080 (прокси):**
+**Устанавливаем и запускаем MTProto-прокси:**
+
+	docker run -d --net=host --name=mtproto-proxy --restart=always -v proxy-config:/data telegrammessenger/proxy:latest
+	
+**Получаем ссылку для настройки MTProto-прокси:**
+
+	docker logs mtproto-proxy
+	
+**Останавливаем MTProto-прокси:**
+
+	docker stop mtproto-proxy
+	
+**Закрываем на сервере все порты, кроме 22 (ssh), 1080 (SOCKS) и 443 (MTProto):**
 
 	sudo ufw allow 1080/tcp
 	sudo ufw allow 22/tcp
+	sudo ufw allow 443/tcp
 
 **Закрываем доступ для сетей Mail.ru (https://t.me/zatelecom/4773):**
 
@@ -68,9 +80,4 @@
 	ufw deny from 217.69.128.0/20
 	sudo ufw enable
 	
-**Убираемся за собой:**
-
-	rm /opt/dante-1.4.2.tar.gz
-	rm -r /opt/dante-1.4.2/
-
-Прокси-сервер для Telegram запущен и работает на 1080 порту, вы восхитительны!
+Прокси-сервер для Telegram с поддержкой SOCKS и MTProto запущен, вы восхитительны!
