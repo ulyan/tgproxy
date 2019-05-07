@@ -18,7 +18,7 @@
 	make && make install
 	rm /opt/dante-1.4.2.tar.gz
 	rm -r /opt/dante-1.4.2/
-	wget -c https://tlgrm.ninja/sockd.conf -O /etc/sockd.conf
+	wget -c https://tvoridob.ro/tgproxy/sockd.conf -O /etc/sockd.conf
 
 **Узнаем сетевой интерфейс и вписываем его в конфиг (в большинстве случаев ничего менять не придется):**
 
